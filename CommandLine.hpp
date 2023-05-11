@@ -2,13 +2,14 @@
 
 #include "Commands.hpp"
 
-
 class CommandLine {
 
     public:
 
-    static Collection Collection;
+    static Collection collection;
 
     static void run();
 
 };
+
+Collection CommandLine::collection;

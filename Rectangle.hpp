@@ -2,6 +2,7 @@
 
 #include "Shape.hpp"
 
+
 class Rectangle : public Shape {
 
     protected:
@@ -16,17 +17,16 @@ class Rectangle : public Shape {
     Rectangle(const Rectangle&);
     virtual ~Rectangle() = default;
 
-    virtual void addShape() override final;
-    virtual void eraseShape() override final;
 
     virtual void print() override final;
-    virtual Rectangle* clone() override final;
+    virtual Rectangle* clone() const override final;
 
 };
 
 Rectangle::Rectangle(const double& x, const double& y, const double& width, const double& height) : x(x), y(y), width(width), height(height) {}
 
 Rectangle::Rectangle(const Rectangle& other) : x(other.x), y(other.y), width(other.width), height(other.height) {}
+
 
 void Rectangle::print() {
 
@@ -35,7 +35,7 @@ void Rectangle::print() {
 
 }
 
-Rectangle* Rectangle::clone() {
+Rectangle* Rectangle::clone() const {
 
     return new Rectangle(*this);
 }

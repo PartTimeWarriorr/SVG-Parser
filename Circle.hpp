@@ -2,6 +2,7 @@
 
 #include "Shape.hpp"
 
+
 class Circle : public Shape {
 
     protected:
@@ -16,17 +17,16 @@ class Circle : public Shape {
     Circle(const Circle&);
     virtual ~Circle() = default;
 
-    virtual void addShape() override final;
-    virtual void eraseShape() override final;
 
     virtual void print() override final;
-    virtual Circle* clone() override final;
+    virtual Circle* clone() const override final;
 
 };
 
 Circle::Circle(const double& cx, const double& cy, const double& radius) : cx(cx), cy(cy), radius(radius) {}
 
 Circle::Circle(const Circle& other) : cx(other.cx), cy(other.cy), radius(other.radius) {}
+
 
 void Circle::print() {
 
@@ -35,7 +35,7 @@ void Circle::print() {
 
 }
 
-Circle* Circle::clone() {
+Circle* Circle::clone() const {
 
     return new Circle(*this);
 }

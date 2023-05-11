@@ -16,12 +16,9 @@ class Shape {
 
     public:
 
-    virtual void addShape() = 0;
-    virtual void eraseShape() = 0;
-
     virtual ~Shape() = default;
 
     virtual void print() = 0;
-    virtual Shape* clone() = 0;
+    virtual Shape* clone() const = 0;
 
 };
