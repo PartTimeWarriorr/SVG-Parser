@@ -16,9 +16,13 @@ class Shape {
 
     public:
 
+    Shape(const string&);
     virtual ~Shape() = default;
 
     virtual void print() = 0;
     virtual Shape* clone() const = 0;
+    virtual void translate(const double&, const double&) = 0;
 
 };
+
+Shape::Shape(const string& color) : color(color) {}
