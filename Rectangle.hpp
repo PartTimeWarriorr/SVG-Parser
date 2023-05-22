@@ -26,6 +26,7 @@ class Rectangle : public Shape {
     virtual void print() override final;
     virtual Rectangle* clone() const override final;
     virtual void translate(const double&, const double&) override final;
+    virtual void printInFile(ofstream&) override final;
 
 };
 
@@ -68,3 +69,19 @@ void Rectangle::translate(const double& horizontal, const double& vertical) {
     setX(getX() + horizontal);
     setY(getY() + vertical);
 }
+
+void Rectangle::printInFile(ofstream& ofile) {
+
+    ofile << "  <rect x=\"" 
+              << x 
+              << "\" y=\"" 
+              << y 
+              << "\" width=\"" 
+              << width 
+              << "\" height=\"" 
+              << height 
+              << "\" fill=\"" 
+              << color 
+              << "\" /> \n";
+              
+} 

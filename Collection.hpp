@@ -7,13 +7,15 @@
 
 class Collection {
 
-    public:
+    private:
 
     vector<Shape*> shapes;
 
     public:
 
     Collection() = default;
+    Collection(vector<Shape*>) = delete;
+    Collection(const Collection&) = delete;
 
     void addShape(const Shape*);
     void eraseShape(unsigned int);
@@ -23,6 +25,9 @@ class Collection {
     vector<Shape*> getVector() const;
 
     void translateShape(const int, const double&, const double&);
+
+    void clearShapes();
+    void printAllInFile(ofstream&);
 };
 
 
@@ -53,4 +58,17 @@ vector<Shape*> Collection::getVector() const {
 void Collection::translateShape(const int index, const double& horizontal, const double& vertical) {
 
     shapes[index]->translate(horizontal, vertical);
+}
+
+void Collection::clearShapes() {
+
+    shapes.clear();
+}
+
+
+void Collection::printAllInFile(ofstream& ofile) {
+
+    for(size_t i = 0; i < shapes.size(); ++i)
+        shapes[i]->printInFile(ofile);
+
 }

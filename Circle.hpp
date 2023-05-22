@@ -26,6 +26,7 @@ class Circle : public Shape {
     virtual void print() override final;
     virtual Circle* clone() const override final;
     virtual void translate(const double&, const double&) override final;
+    virtual void printInFile(ofstream&) override final;
 
 };
 
@@ -68,3 +69,17 @@ void Circle::translate(const double& horizontal, const double& vertical) {
     setX(getX() + horizontal);
     setY(getY() + vertical);
 }
+
+void Circle::printInFile(ofstream& ofile) {
+
+    ofile << "  <circle cx=\""
+          << cx
+          << "\" cy=\""
+          << cy
+          << "\" r=\""
+          << radius
+          << "\" fill=\""
+          << color
+          << "\" /> \n";
+          
+} 

@@ -20,16 +20,16 @@ void CommandLine::run() {
         cout << "> ";
         getline(cin, Commands::command);
 
-        if(!Commands::command.compare(0, 5, "open "))
-            break;
+        if(!Commands::command.compare(0, 5, "open ") || !Commands::command.compare(0, 4, "open"))
+            Commands::open();
         else if(!Commands::command.compare("close"))
-            break;
+            Commands::close();
         else if(!Commands::command.compare("save"))
-            break;
-        else if(!Commands::command.compare(0, 8, "save as "))
-            break;
+            Commands::save();
+        else if(!Commands::command.compare(0, 8, "save as ") || !Commands::command.compare(0, 7, "save as"))
+            Commands::saveAs();
         else if(!Commands::command.compare("help"))
-            break;
+            Commands::help();
         else if(!Commands::command.compare("exit")) {
             Commands::exit();
             break;
@@ -41,14 +41,14 @@ void CommandLine::run() {
             Commands::create();
         else if(!Commands::command.compare(0, 6, "erase ") || !Commands::command.compare(0, 5, "erase"))
             Commands::erase();
-        else if(!Commands::command.compare("translate"))
+        else if(!Commands::command.compare("translate") || !Commands::command.compare(0, 9, "translate"))
             Commands::translate();
         else if(!Commands::command.compare(0, 7, "within "))
             break;
 
         else {
 
-            cout << "Invalid command. Enter \"help\" to receive information about the available commands.\n";
+            cout << "Invalid command. Enter \"help\" to get information about the available commands.\n";
 
         }
     }

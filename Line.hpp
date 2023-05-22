@@ -28,6 +28,7 @@ class Line : public Shape {
     virtual void print() override final;
     virtual Line* clone() const override final;
     virtual void translate(const double&, const double&) override final;
+    virtual void printInFile(ofstream&) override final;
 
 };
 
@@ -82,4 +83,20 @@ void Line::translate(const double& horizontal, const double& vertical) {
 
     setX(getX1() + horizontal, getX2() + horizontal);
     setY(getY1() + vertical, getY2() + vertical);
+}
+
+void Line::printInFile(ofstream& ofile) {
+
+    ofile << "  <line x1=\""
+          << x1
+          << "\" y1=\""
+          << y1
+          << "\" x2=\""
+          << x2
+          << "\" y2=\""
+          << y2 
+          << "\" stroke=\""
+          << color
+          << "\" /> \n";
+
 }
