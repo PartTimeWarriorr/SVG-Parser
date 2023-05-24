@@ -210,6 +210,7 @@ void Commands::open() {
 
     Commands::fileOpened = true;   
     Commands::openedFileName = fileName; 
+    cout << "File successfully opened\n";
 
     ifile.close();
 }
