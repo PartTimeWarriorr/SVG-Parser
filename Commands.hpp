@@ -6,7 +6,6 @@
 
 using std::cin;
 
-
 class Commands {
 
     private:
@@ -150,7 +149,7 @@ void Commands::open() {
             }
 
 
-            Rectangle r1(arg1, arg2, arg3, arg4, color);
+            rns::Rectangle r1(arg1, arg2, arg3, arg4, color);
 
             Commands::collection.addShape(&r1);
 
@@ -381,7 +380,7 @@ void Commands::help() {
             "create <shape-name> <...>  creates new element\n"
             "erase <index>              erases element at index <index>\n"
             "translate                  starts translation function\n"
-            "within <shape-name> <...>  returns all elements found in the specified region\n";
+            "within <shape-name> <...>  returns all elements fully in the specified region\n";
 }
 
 void Commands::exit() {
@@ -438,7 +437,7 @@ void Commands::create() {
             return;
         }
 
-        Rectangle r1(arg1, arg2, arg3, arg4, str5);
+        rns::Rectangle r1(arg1, arg2, arg3, arg4, str5);
 
         Commands::collection.addShape(&r1);
         cout << "Successfully created rectangle " << Commands::collection.getVector().size() << '\n';
@@ -563,6 +562,8 @@ void Commands::erase() {
     }
 
     Commands::collection.eraseShape(arg - 1);
+    cout << "Successfully erased shape " << arg << '\n';
+    
 }
 
 void Commands::translate() {
@@ -591,6 +592,8 @@ void Commands::translate() {
 
         for(size_t i = 0; i < Commands::collection.getVector().size(); ++i)
             Commands::collection.translateShape(i, horizontal, vertical);
+
+        cout << "Successfully translated all elements\n";
         
         return;
     }
@@ -615,6 +618,7 @@ void Commands::translate() {
     }
 
     Commands::collection.translateShape(index - 1, horizontal, vertical);
+    cout << "Successfully translated element " << index << '\n';
 
 }
 
@@ -653,9 +657,14 @@ void Commands::within() {
             return;
         }
 
-        Rectangle r1(arg1, arg2, arg3, arg4, "black");
+        for(size_t i = 0; i < Commands::collection.getVector().size(); ++i)
+            if(Commands::collection.getVector()[i]->isWithinRectangle(arg1, arg2, arg3, arg4)) {
 
-        // logika za within (member commandi na trite shapes klasa)
+                cout << i + 1 << ". ";
+                Commands::collection.getVector()[i]->print();
+            }
+
+        return;
 
     }
 
@@ -686,9 +695,15 @@ void Commands::within() {
             return;
         }
 
-        Circle c1(arg1, arg2, arg3, "black");
+        for(size_t i = 0; i < Commands::collection.getVector().size(); ++i)
+            if(Commands::collection.getVector()[i]->isWithinCircle(arg1, arg2, arg3)) {
 
-        // logika za within (member commandi na trite shapes klasa)
+                cout << i + 1 << ". ";
+                Commands::collection.getVector()[i]->print();
+            }
+
+        return;
+
     }
 
     else

@@ -29,6 +29,8 @@ class Line : public Shape {
     virtual Line* clone() const override final;
     virtual void translate(const double&, const double&) override final;
     virtual void printInFile(ofstream&) override final;
+    virtual bool isWithinRectangle(const double&, const double&, const double&, const double&) override final;
+    virtual bool isWithinCircle(const double&, const double&, const double&) override final;
 
 };
 
@@ -98,5 +100,26 @@ void Line::printInFile(ofstream& ofile) {
           << "\" stroke=\""
           << color
           << "\" /> \n";
+
+}
+
+bool Line::isWithinRectangle(const double& rX, const double& rY, const double& rWidth, const double& rHeight) {
+
+    return (x1 >= rX && x1 <= rX + rWidth && x2 >= rX && x2 <= rX + rWidth && y1 >= rY && y1 <= rY + rHeight && y2 >= rY && y2 <= rY + rHeight);
+}
+
+
+bool Line::isWithinCircle(const double& cX, const double& cY, const double& cRadius) {
+
+    Point lA, lB, center;
+    lA.x = x1;
+    lA.y = y1;
+    lB.x = x2;
+    lB.y = y2;
+
+    center.x = cX;
+    center.y = cY;
+
+    return (getDistance(lA, center) <= cRadius && getDistance(lB, center) <= cRadius);
 
 }

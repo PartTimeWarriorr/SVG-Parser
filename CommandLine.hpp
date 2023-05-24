@@ -3,7 +3,6 @@
 #include "Commands.hpp"
 
 using std::cout;
-using std::cin;
 
 class CommandLine {
 
@@ -44,7 +43,7 @@ void CommandLine::run() {
         else if(!Commands::command.compare("translate") || !Commands::command.compare(0, 9, "translate"))
             Commands::translate();
         else if(!Commands::command.compare(0, 7, "within "))
-            break;
+            Commands::within();
 
         else {
 

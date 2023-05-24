@@ -19,6 +19,7 @@ class Circle : public Shape {
 
     double getX();
     double getY();
+    double getRadius();
 
     void setX(const double&);
     void setY(const double&);
@@ -27,6 +28,8 @@ class Circle : public Shape {
     virtual Circle* clone() const override final;
     virtual void translate(const double&, const double&) override final;
     virtual void printInFile(ofstream&) override final;
+    virtual bool isWithinRectangle(const double&, const double&, const double&, const double&) override final;
+    virtual bool isWithinCircle(const double&, const double&, const double&) override final;
 
 };
 
@@ -42,6 +45,11 @@ double Circle::getX() {
 double Circle::getY() {
 
     return this->cy;
+}
+
+double Circle::getRadius() {
+
+    return this->radius;
 }
 
 void Circle::setX(const double& cx) {
@@ -83,3 +91,20 @@ void Circle::printInFile(ofstream& ofile) {
           << "\" /> \n";
           
 } 
+
+bool Circle::isWithinRectangle(const double& rX, const double& rY, const double& rWidth, const double& rHeight) {
+
+    return (cx - radius >= rX && cx - radius <= rX + rWidth && cx + radius >= rX && cx + radius <= rX + rWidth &&
+            cy - radius >= rY && cy - radius <= rY + rHeight && cy + radius >= rY && cy + radius <= rY + rHeight);
+}
+
+bool Circle::isWithinCircle(const double& cX, const double& cY, const double& cRadius) {
+
+    Point center, otherCenter;
+    center.x = cx;
+    center.y = cy;
+    otherCenter.x = cX;
+    otherCenter.y = cY;
+
+    return (getDistance(center, otherCenter) + radius <= cRadius);
+}
