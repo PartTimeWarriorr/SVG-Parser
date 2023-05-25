@@ -57,16 +57,6 @@ void Commands::open() {
 
     iss >> buffer >> fileName;
 
-    /*
-    ako e:
-    cin >> buffer >> fileName;
-
-    1. Ne coutva "> " kakto si trqbva.
-    2. Lipsva cin.ignore() i zatova printira oshte edno "Invalid command"
-    3. Nqma smisul sashtoto moje direktno da zapishem vsichkite argumenti v isstream.
-    
-    */
-
     if(fileName.compare("") == 0) {
 
         cout << "Please specify file name.\n";
