@@ -57,6 +57,16 @@ void Commands::open() {
 
     iss >> buffer >> fileName;
 
+    /*
+    ako e:
+    cin >> buffer >> fileName;
+
+    1. Ne coutva "> " kakto si trqbva.
+    2. Lipsva cin.ignore() i zatova printira oshte edno "Invalid command"
+    3. Nqma smisul sashtoto moje direktno da zapishem vsichkite argumenti v isstream.
+    
+    */
+
     if(fileName.compare("") == 0) {
 
         cout << "Please specify file name.\n";
@@ -370,6 +380,12 @@ void Commands::create() {
     iss >> buffer >> shape;
     iss >> str1 >> str2 >> str3 >> str4 >> str5;
 
+    if(shape.compare("") == 0) {
+
+        cout << "Please specify element name and properties\n";
+        return;
+    }
+
     if(shape.compare("rectangle") == 0) {
 
         if(str4.compare("") == 0 || str3.compare("") == 0 || str2.compare("") == 0 || str1.compare("") == 0 || str5.compare("") == 0) {
@@ -598,6 +614,12 @@ void Commands::within() {
     iss >> buffer >> region;
     iss >> str1 >> str2 >> str3 >> str4;
 
+    if(region == "") {
+
+        cout << "Please specify region and properties\n";
+        return;
+    }
+
     if(region == "rectangle") {
 
         if(str4.compare("") == 0 || str3.compare("") == 0 || str2.compare("") == 0 || str1.compare("") == 0) {
@@ -673,8 +695,12 @@ void Commands::within() {
 
     }
 
-    else
+    else {
+
         cout << "Invalid shape name\n";
+        return;
+
+    }
 
     
     cout << "No elements found in region\n";

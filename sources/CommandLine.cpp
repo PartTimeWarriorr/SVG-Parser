@@ -25,13 +25,13 @@ void CommandLine::run() {
         
         else if(!Commands::command.compare("print"))
             Commands::print();
-        else if(!Commands::command.compare(0, 7, "create "))
+        else if(!Commands::command.compare(0, 7, "create ") || !Commands::command.compare(0, 6, "create"))
             Commands::create();
         else if(!Commands::command.compare(0, 6, "erase ") || !Commands::command.compare(0, 5, "erase"))
             Commands::erase();
         else if(!Commands::command.compare("translate") || !Commands::command.compare(0, 9, "translate"))
             Commands::translate();
-        else if(!Commands::command.compare(0, 7, "within "))
+        else if(!Commands::command.compare(0, 7, "within ") || !Commands::command.compare(0, 6, "within"))
             Commands::within();
 
         else {
