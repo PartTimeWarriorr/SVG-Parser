@@ -1,6 +1,6 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
-#include "../Rectangle.hpp"
+#include "../headers/Rectangle.hpp"
 
 TEST_CASE("Test getters") {
 
@@ -63,14 +63,14 @@ TEST_CASE("Test within function, case 1") {
 
     rns::Rectangle r1(2, 4, 10, 10, "black");
 
-    REQUIRE_FALSE(r1.isWithinCircle(2, 4, 2));
-    REQUIRE_FALSE(!r1.isWithinCircle(2, 4, 50));
+    REQUIRE(!r1.isWithinCircle(2, 4, 2));
+    REQUIRE(r1.isWithinCircle(2, 4, 50));
 }
 
 TEST_CASE("Test within function, case 2") {
 
     rns::Rectangle r1(2, 4, 10, 10, "black");
 
-    REQUIRE_FALSE(r1.isWithinRectangle(0, 0, 20, 5));
-    REQUIRE_FALSE(!r1.isWithinRectangle(0, 0, 100, 100));
+    REQUIRE(!r1.isWithinRectangle(0, 0, 20, 5));
+    REQUIRE(r1.isWithinRectangle(0, 0, 100, 100));
 }

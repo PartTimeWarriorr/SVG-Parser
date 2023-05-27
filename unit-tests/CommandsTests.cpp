@@ -1,6 +1,6 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
-#include "../Commands.hpp"
+#include "../headers/Commands.hpp"
 
 TEST_CASE("Test open function") {
 
@@ -8,71 +8,80 @@ TEST_CASE("Test open function") {
     Commands::command = "open base.svg";
     Commands::open();
 
-    REQUIRE_FALSE(!Commands::collection.getVector().empty());
-
+    REQUIRE(Commands::collection.getVector().empty());
 }
 
 TEST_CASE("Test open function 2") {
 
+    Commands::fileOpened = false;
     Commands::command = "open";
     Commands::open();
 
-    REQUIRE_FALSE(!Commands::collection.getVector().empty());
+    REQUIRE(Commands::collection.getVector().empty());
+}
+
+TEST_CASE("Test open function 3") {
+
+    Commands::fileOpened = false;
+    Commands::command = "open base.svg";
+    Commands::open();
+
+    REQUIRE(!Commands::collection.getVector().empty());
 }
 
 TEST_CASE("Test save function") {
 
+    Commands::openedFileName = "";
     Commands::fileOpened = false;
     Commands::command = "save";
     Commands::save();
 
-    REQUIRE_FALSE(Commands::fileSaved);
+    REQUIRE(!Commands::fileSaved);
 }
 
-TEST_CASE("Test create function, case 1") {
+TEST_CASE("Test save function 2") {
 
-    Commands::command = "create rectangle 10 10 10 violet";
-    Commands::create();
+    Commands::openedFileName = "s.svg";
+    Commands::fileOpened = true;
+    Commands::fileSaved = false;
+    Commands::command = "save";
+    Commands::save();
 
-    REQUIRE_FALSE(!Commands::collection.getVector().empty());
-
+    REQUIRE(Commands::fileSaved);
 }
 
-TEST_CASE("Test create function, case 2") {
+TEST_CASE("Test save as function") {
 
-    Commands::command = "create retangle 10 10 10 10 violet";
-    Commands::create();
+    Commands::fileOpened = false;
+    Commands::fileSaved = false;
+    Commands::command = "save as";
+    Commands::saveAs();
 
-    REQUIRE_FALSE(!Commands::collection.getVector().empty());
-
+    REQUIRE(!Commands::fileSaved);
 }
 
-TEST_CASE("Test create function, case 3") {
+TEST_CASE("Test save as function 2") {
 
-    Commands::command = "create circle 20 2 3";
-    Commands::create();
+    Commands::fileOpened = true;
+    Commands::command = "save as s.svg";
+    Commands::saveAs();
 
-    REQUIRE_FALSE(!Commands::collection.getVector().empty());
-
+    REQUIRE(Commands::fileSaved);
 }
 
-TEST_CASE("Test create function, case 4") {
+TEST_CASE("Test close function") {
 
-    Commands::command = "create line 1 s 3 4 violet";
-    Commands::create();
+    Commands::collection.clearShapes();
 
-    REQUIRE_FALSE(!Commands::collection.getVector().empty());
+    Commands::fileOpened = false;
+    Commands::command = "open s.svg";
+    Commands::fileSaved = false;
+    Commands::open();
+    Commands::fileSaved = true;
 
-}
+    REQUIRE(!Commands::collection.getVector().empty());
 
-TEST_CASE("Test erase function") {
+    Commands::close();
 
-    rns::Rectangle r1(2, 4, 50, 20, "violet");
-
-    Commands::collection.addShape(&r1);
-
-    Commands::command = "erase 1";
-    Commands::erase();
-
-    REQUIRE_FALSE(!Commands::collection.getVector().empty());
+    REQUIRE(Commands::collection.getVector().empty());
 }

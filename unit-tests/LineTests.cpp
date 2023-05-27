@@ -1,6 +1,6 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
-#include "../Line.hpp"
+#include "../headers/Line.hpp"
 
 TEST_CASE("Test getters") {
 
@@ -69,14 +69,14 @@ TEST_CASE("Test within function, case 1") {
 
     Line l1(2, 3, 4, 5, "black");
 
-    REQUIRE_FALSE(l1.isWithinCircle(2, 3, 1));
-    REQUIRE_FALSE(!l1.isWithinCircle(3, 3, 10));
+    REQUIRE(!l1.isWithinCircle(2, 3, 1));
+    REQUIRE(l1.isWithinCircle(3, 3, 10));
 }
 
 TEST_CASE("Test within function, case 2") {
 
     Line l1(2, 3, 4, 5, "black");
 
-    REQUIRE_FALSE(l1.isWithinRectangle(100, 100, 20, 25));
-    REQUIRE_FALSE(!l1.isWithinRectangle(0, 0, 10, 10));
+    REQUIRE(!l1.isWithinRectangle(100, 100, 20, 25));
+    REQUIRE(l1.isWithinRectangle(0, 0, 10, 10));
 }

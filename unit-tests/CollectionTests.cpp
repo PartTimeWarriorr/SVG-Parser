@@ -1,6 +1,6 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
-#include "../Collection.hpp"
+#include "../headers/Collection.hpp"
 
 TEST_CASE("Adding and erasing shape") {
 
@@ -9,11 +9,11 @@ TEST_CASE("Adding and erasing shape") {
 
     c.addShape(&l1);
 
-    REQUIRE_FALSE(c.getVector().empty());
+    REQUIRE(!c.getVector().empty());
     
     c.eraseShape(0);
 
-    REQUIRE_FALSE(!c.getVector().empty());
+    REQUIRE(c.getVector().empty());
 }
 
 TEST_CASE("Clear shapes") {
@@ -25,9 +25,9 @@ TEST_CASE("Clear shapes") {
     c.addShape(&l1);
     c.addShape(&c1);
 
-    REQUIRE_FALSE(c.getVector().empty());
+    REQUIRE(!c.getVector().empty());
 
     c.clearShapes();
 
-    REQUIRE_FALSE(!c.getVector().empty());
+    REQUIRE(c.getVector().empty());
 }

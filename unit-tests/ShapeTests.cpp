@@ -1,6 +1,6 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h"
-#include "../Circle.hpp"
+#include "../headers/Circle.hpp"
 
 TEST_CASE("Test Point struct") {
 
