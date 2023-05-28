@@ -549,17 +549,51 @@ void Commands::translate() {
 
     string indStr;
     bool all = false;
-    double horizontal, vertical;
+    int index;
 
     cout << "Please specify element to translate (Enter \"all\" to translate all elements)\n> ";
     cin >> indStr;
+    cin.ignore();
     if(!indStr.compare("all")) 
         all = true;
-    
 
+    else {
+
+        try {
+            
+            index = std::stoi(indStr);
+        }
+        catch(std::invalid_argument) {
+
+            cout << "You have entered an invalid index\n";
+            return;
+        }
+
+
+        if(index - 1 > Commands::collection.getVector().size() - 1 || index - 1 < 0) {
+
+            cout << "Invalid index\n";
+            return;
+        }
+    }
+
+    string hString, vString;
+    double horizontal, vertical;
+    
     cout << "Enter translate values: \n> ";
-    cin >> horizontal >> vertical;
+    cin >> hString >> vString;
     cin.ignore();
+
+    try {
+
+        horizontal = std::stoi(hString);
+        vertical = std::stoi(vString);
+    }
+    catch(std::invalid_argument) {
+
+        cout << "You have entered invalid values\n";
+        return;
+    }
 
     if(all) {
 
@@ -571,24 +605,6 @@ void Commands::translate() {
         return;
     }
     
-    int index;
-
-    try {
-        
-        index = std::stoi(indStr);
-    }
-    catch(std::invalid_argument) {
-
-        cout << "You have entered an invalid index\n";
-        return;
-    }
-
-
-    if(index - 1 > Commands::collection.getVector().size() - 1 || index - 1 < 0) {
-
-        cout << "Invalid index\n";
-        return;
-    }
 
     Commands::collection.translateShape(index - 1, horizontal, vertical);
     cout << "Successfully translated element " << index << '\n';
