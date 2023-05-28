@@ -1,11 +1,10 @@
 <?xml version="1.0" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
-  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg>
-  <line x1="20" y1="20" x2="30" y2="40" stroke="salmon" /> 
-  <line x1="20" y1="20" x2="40" y2="20" stroke="salmon" /> 
-  <line x1="40" y1="20" x2="30" y2="40" stroke="salmon" /> 
-  <circle cx="25" cy="14.5" r="5" fill="cornsilk" /> 
-  <circle cx="35" cy="14.5" r="5" fill="springgreen" /> 
-  <circle cx="30" cy="6.5" r="5" fill="palevioletred" /> 
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg">
+  <line x1="20" y1="20" x2="30" y2="40" stroke="salmon" />
+  <line x1="20" y1="20" x2="40" y2="20" stroke="salmon" />
+  <line x1="40" y1="20" x2="30" y2="40" stroke="salmon" />
+  <circle cx="25" cy="14.5" r="5" fill="cornsilk" />
+  <circle cx="35" cy="14.5" r="5" fill="springgreen" />
+  <circle cx="30" cy="6.5" r="5" fill="palevioletred" />
 </svg>
