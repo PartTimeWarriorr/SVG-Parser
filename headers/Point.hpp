@@ -4,5 +4,3 @@ struct Point {
 
     double x, y;
 };
-
-// ../headers/

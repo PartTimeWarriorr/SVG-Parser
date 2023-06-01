@@ -114,10 +114,7 @@ void Commands::open() {
                 return;
             }
 
-
-            rns::Rectangle r1(arg1, arg2, arg3, arg4, color);
-
-            Commands::collection.addShape(&r1);
+            Commands::collection.addShape(new rns::Rectangle(arg1, arg2, arg3, arg4, color));
 
         }
 
@@ -156,9 +153,7 @@ void Commands::open() {
                 return;
             }
 
-            Circle c1(arg1, arg2, arg3, color);
-
-            Commands::collection.addShape(&c1);
+            Commands::collection.addShape(new Circle(arg1, arg2, arg3, color));
 
         }
 
@@ -200,9 +195,7 @@ void Commands::open() {
                 return;
             }
 
-            Line l1(arg1, arg2, arg3, arg4, color);
-
-            Commands::collection.addShape(&l1);
+            Commands::collection.addShape(new Line(arg1, arg2, arg3, arg4, color));
             
         }
 
@@ -410,9 +403,7 @@ void Commands::create() {
             return;
         }
 
-        rns::Rectangle r1(arg1, arg2, arg3, arg4, str5);
-
-        Commands::collection.addShape(&r1);
+        Commands::collection.addShape(new rns::Rectangle(arg1, arg2, arg3, arg4, str5));
         cout << "Successfully created rectangle " << Commands::collection.getVector().size() << '\n';
     }
 
@@ -443,10 +434,7 @@ void Commands::create() {
             return;
         }
 
-
-        Line l1(arg1, arg2, arg3, arg4, str5);
-
-        Commands::collection.addShape(&l1);
+        Commands::collection.addShape(new Line(arg1, arg2, arg3, arg4, str5));
         cout << "Successfully created line " << Commands::collection.getVector().size() << '\n';
 
     }
@@ -484,9 +472,7 @@ void Commands::create() {
             return;
         }
 
-        Circle c1(arg1, arg2, arg3, str4);
-
-        Commands::collection.addShape(&c1);
+        Commands::collection.addShape(new Circle(arg1, arg2, arg3, str4));
         cout << "Successfully created circle " << Commands::collection.getVector().size() << '\n';
     }
 
