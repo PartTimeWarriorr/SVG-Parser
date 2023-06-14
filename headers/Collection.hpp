@@ -1,9 +1,6 @@
 #pragma once
 
-#include "Rectangle.hpp"
-#include "Circle.hpp"
-#include "Line.hpp"
-
+#include "Shape.hpp"
 
 class Collection {
 

@@ -1,6 +1,9 @@
 #pragma once
 
 #include "Collection.hpp"
+#include "Rectangle.hpp"
+#include "Circle.hpp"
+#include "Line.hpp"
 #include <sstream> 
 #include <exception> 
 
